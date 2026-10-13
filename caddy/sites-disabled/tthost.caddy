@@ -1,0 +1,5 @@
+# Domain tt: Points to a service running directly on the host (outside Docker)
+tt.example.uk {
+    reverse_proxy host.docker.internal:4321
+}
+

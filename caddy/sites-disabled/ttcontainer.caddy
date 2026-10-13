@@ -1,0 +1,4 @@
+# Domain ttc: Points to a container on the same Docker network
+ttc.domain.uk {
+    reverse_proxy containername:4321 
+}

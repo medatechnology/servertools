@@ -1,0 +1,23 @@
+services:
+  caddyproxy:
+    image: caddy:latest
+    container_name: caddyproxy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    extra_hosts:
+      - "host.docker.internal:host-gateway" # Allows Caddy to see the host machine
+    networks:
+      - caddy_net
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./sites-enabled:/etc/caddy/sites-enabled # for sites
+      - /opt/dockdata/caddy/data:/data
+      - /opt/dockdata/caddy/config:/config
+      - /opt/dockdata/downloads:/var/www/downloads
+
+networks:
+  caddy_net:
+    external: true # Or define it here if not already created
+

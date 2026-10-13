@@ -1,0 +1,7 @@
+public.domain.uk {
+    # Set the root folder for the entire domain
+    root * /var/www/downloads/public
+
+    # Enable file browsing for everything
+    file_server browse
+}

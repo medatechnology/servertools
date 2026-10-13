@@ -1,0 +1,26 @@
+download.domain.uk {
+    # Set the root folder for the entire domain
+    root * /var/www/downloads
+
+    # Enable file browsing for everything
+    file_server browse
+
+    # 1. Define a named matcher that targets everything EXCEPT /public
+    @private_files {
+        not path /public/*
+    }
+
+    # 2. Apply basic_auth only to that matcher
+    basic_auth @private_files {
+        youruser [HASH CODE - USE caddy-tools]
+    }
+    # Secure upload rules (remains the same)
+#    route /upload* {
+#        basic_auth {
+#            youruser [HASH CODE - USE caddy-tools]
+#        }
+#        upload {
+#            dest_dir /var/www/shared_files
+#        }
+#    }
+}
